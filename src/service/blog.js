@@ -3,7 +3,7 @@ const service = require('./index')
 const blogService = {}
 
 // 新增文章
-blogService.addArticle = function (content) {
+blogService.addArticle = (content) => {
   let sql = `INSERT INTO article SET  ?`
   return service.query(sql, [content])
 }
@@ -14,14 +14,14 @@ blogService.deleteArticle = (id) => {
   return service.query(sql)
 }
 
-// 列表查找
-blogService.getList = function (title) {
+// 通过关键字查找文章
+blogService.getList = (title) => {
   let sql = `SELECT * FROM article WHERE  title LIKE '%${ title }%'`;
   return service.query(sql)
 }
 
-// 根据id查找
-blogService.getById = function (id) {
+// 根据id查找文章
+blogService.getById = (id) => {
   let sql = `SeLECT * FROM article WHERE id = '${ id }'`
   return service.query(sql)
 }
