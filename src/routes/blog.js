@@ -3,21 +3,18 @@ const router = express.Router()
 let blogController = require('../controller/blog')
 
 // 新增
-router.post('/add', (req, res, nnext) => {
-})
+router.get('/add', blogController.addArticle)
 
 // 删除
-router.delete('/delete', () => {
-})
+router.get('/delete', blogController.deleteArticle)
 
 // 列表查询
-router.get('/list', blogController.getList)
+router.get('/list', blogController.getArticleList)
 
 // 根据id查询
-router.get('/', blogController.getById)
+router.get('/', blogController.getArticleById)
 
 // 修改
-router.put('/', (req, res, next) => {
-})
+router.get('/update', blogController.updateArticle)
 
 module.exports = router;

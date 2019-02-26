@@ -11,9 +11,9 @@ let connection = mysql.createConnection({
 
 connection.connect();
 
-service.query = function (sql) {
+service.query = function (sql, rows) {
   return new Promise((resolve, reject) => {
-    connection.query(sql, (err, result) => {
+    connection.query(sql, rows, (err, result) => {
       if (err) reject(err)
       resolve(result)
     })
