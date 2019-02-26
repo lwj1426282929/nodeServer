@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "A Vue.js project",
+  "author": "赖维健 <01573241@yto.net.cn>",
+  "private": true,
+  "scripts": {
+    "dev": "node index.js",
+    "start": "npm run dev",
+    "lint": "eslint --ext .js,.vue src",
+    "build": "node build/build.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13",
+    "mysql": "^2.16.0",
+    "qs": "^6.5.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
