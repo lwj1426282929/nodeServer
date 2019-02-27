@@ -9,8 +9,10 @@ let connection = mysql.createConnection({
   password: '123'
 });
 
+// 连接
 connection.connect();
 
+// 执行sql
 service.query = function (sql, rows) {
   return new Promise((resolve, reject) => {
     connection.query(sql, rows, (err, result) => {

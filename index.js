@@ -1,6 +1,7 @@
 // 引入express
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 
 // 创建http服务
 const http = require('http')
@@ -16,5 +17,7 @@ httpServer.listen(3000, () => {
 
 // 挂载路由
 app.use('/blog', blog)
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 module.exports = app
