@@ -15,9 +15,10 @@ httpServer.listen(3000, () => {
   console.log('HTTP Server is running at http://localhost:3000')
 })
 
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
 // 挂载路由
 app.use('/blog', blog)
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 module.exports = app

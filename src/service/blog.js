@@ -15,20 +15,47 @@ blogService.deleteBlog = (id) => {
 }
 
 // 通过关键字查找文章
-blogService.blogList = (title) => {
-  let sql = `SELECT * FROM article WHERE  title LIKE '%${ title }%'`;
+blogService.blogList = (key) => {
+  let sql = `SELECT ID id,
+            TITLE title,
+            AUTHOR author,
+            TAG tag,
+            CREATE_TIME create_time,
+            UPDATE_TIME update_time,
+            CONTENT content,
+            BLOG_TYPE blog_type,
+            MARKDOWN_CONTENT markdown_content 
+            FROM article WHERE  
+            title LIKE '%${ key }%' OR
+            content LIKE '%${ key }%'`;
   return service.query(sql)
 }
 
 // 根据id查找文章
 blogService.getBlogById = (id) => {
-  let sql = `SeLECT * FROM article WHERE id = '${ id }'`
+  let sql = `SeLECT ID id,
+            TITLE title,
+            TAG tag,
+            AUTHOR author,
+            CREATE_TIME create_time,
+            UPDATE_TIME update_time,
+            CONTENT content,
+            BLOG_TYPE blog_type,
+            MARKDOWN_CONTENT markdown_content
+            FROM article WHERE
+            id = '${ id }'`;
   return service.query(sql)
 }
 
 // 修改文章
-blogService.updateBlog = (content) => {
-  let sql = `UPDATE article SET title = '${ content.title }',author = '${ content.author }' WHERE id = '${ content.id }'`
+blogService.updateBlog = (blog) => {
+  let sql = `UPDATE article SET 
+            title = '${ blog.title }', 
+            update_time = '${ blog.update_time }',
+            tag = '${ blog.tag }',
+            content = '${ blog.content }',
+            markdown_content = '${ blog.markdown_content }'
+            WHERE id = '${ blog.id }'`
   return service.query(sql)
 }
 
