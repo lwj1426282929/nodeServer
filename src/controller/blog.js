@@ -8,9 +8,17 @@ const blogController = {}
 
 // 新增文章
 blogController.addBlog = async function (req, res, next) {
-  console.log(req.body)
-  let article = {}
-  let data = await blogService.addBlog(article)
+  let blog = {
+    title: req.body.title,
+    tag: (req.body.tag || []).toString(),
+    author: req.author || '',
+    create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
+    update_time: moment().format('YYYY-MM-DD HH:mm:ss'),
+    content: htmlEncode(req.body.content),
+    blog_type: req.body.blog_type,
+    markdown_content: req.body.markdown_content || ''
+  }
+  let data = await blogService.addBlog(blog)
   res.send(data)
 }
 
@@ -35,7 +43,6 @@ blogController.blogList = async function (req, res, next) {
 blogController.getBlogById = async function (req, res, next) {
   let id = req.query.id
   let [data] = await blogService.getBlogById(id)
-  console.log(data)
   data.content = htmlDecode(data.content)
   res.send(data)
 }
