@@ -18,16 +18,19 @@ blogController.addBlog = async function (req, res, next) {
     blog_type: req.body.blog_type,
     markdown_content: req.body.markdown_content || ''
   }
-  let data = await blogService.addBlog(blog)
-  res.send(data)
+  await blogService.addBlog(blog)
+  res.send({
+    success: true
+  })
 }
 
 // 删除文章
 blogController.deleteBlog = async function (req, res, next) {
   let id = req.body.id
-  console.log(id)
-  let data = await blogService.deleteBlog(id)
-  res.send(data)
+  await blogService.deleteBlog(id)
+  res.send({
+    success: true
+  })
 }
 
 // 通过关键字查询文章
@@ -58,8 +61,10 @@ blogController.updateBlog = async function (req, res, next) {
     content: htmlEncode(req.body.content),
     markdown_content: req.body.markdown_content || ''
   }
-  let data = await blogService.updateBlog(blog)
-  res.send(data)
+  await blogService.updateBlog(blog)
+  res.send({
+    success: true
+  })
 }
 
 module.exports = blogController;
