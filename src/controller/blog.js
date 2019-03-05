@@ -24,7 +24,8 @@ blogController.addBlog = async function (req, res, next) {
 
 // 删除文章
 blogController.deleteBlog = async function (req, res, next) {
-  let id = 2
+  let id = req.body.id
+  console.log(id)
   let data = await blogService.deleteBlog(id)
   res.send(data)
 }
