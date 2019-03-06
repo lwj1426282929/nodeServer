@@ -49,14 +49,14 @@ blogService.getBlogById = (id) => {
 
 // 修改文章
 blogService.updateBlog = (blog) => {
-  let sql = `UPDATE article SET 
-            title = '${ blog.title }', 
-            update_time = '${ blog.update_time }',
-            tag = '${ blog.tag }',
-            content = '${ blog.content }',
-            markdown_content = '${ blog.markdown_content }'
-            WHERE id = '${ blog.id }'`
-  return service.query(sql)
+  let sql = `UPDATE article SET
+            title = ?,
+            update_time = ?, 
+            tag = ?,
+            content = ?,
+            markdown_content = ? 
+            where id = ?`
+  return service.query(sql, [blog.title, blog.update_time, blog.tag, blog.content, blog.markdown_content, blog.id])
 }
 
 module.exports = blogService
