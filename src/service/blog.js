@@ -3,9 +3,9 @@ const service = require('./index')
 const blogService = {}
 
 // 新增文章
-blogService.addBlog = (content) => {
-  let sql = `INSERT INTO article SET  ?`
-  return service.query(sql, [content])
+blogService.addBlog = (blog) => {
+  let sql = `INSERT INTO article SET ?`
+  return service.query(sql, [blog])
 }
 
 // 删除文章
